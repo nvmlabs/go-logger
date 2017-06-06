@@ -11,18 +11,6 @@ import (
 var (
 	standardFields logrus.Fields
 	logger         *logrus.Logger
-
-	// Info logs a info level message
-	Info = logger.Info
-
-	// Warn logs a warn level message
-	Warn = logger.Warn
-
-	// Error logs a error level message
-	Error = logger.Error
-
-	// Fatal logs a fatal level message
-	Fatal = logger.Fatal
 )
 
 func init() {
@@ -61,4 +49,24 @@ func ErrorLogger() (basicLogger *log.Logger, dispose func()) {
 	}
 
 	return
+}
+
+// Info logs an info level message with standard fields
+func Info(msg string) {
+	logger.Info(msg)
+}
+
+// Warn logs a warn level message with standard fields
+func Warn(msg string) {
+	logger.Warn(msg)
+}
+
+// Error logs an error level message with standard fields
+func Error(msg string) {
+	logger.Error(msg)
+}
+
+// Fatal logs a fatal level message with standard fields
+func Fatal(msg string) {
+	logger.Fatal(msg)
 }
