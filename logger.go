@@ -52,37 +52,37 @@ func ErrorLogger() (basicLogger *log.Logger, dispose func()) {
 }
 
 // Info logs an info level message with standard fields
-func Info(msg string, id string) {
-	if id != "" {
-		logger.WithField("request_id", id).Info(msg)
+func Info(msg, id string) {
+	if id == "" {
+		logger.Info(msg)
 		return
 	}
-	logger.Info(msg)
+	logger.WithField("request_id", id).Info(msg)
 }
 
 // Warn logs a warn level message with standard fields
-func Warn(msg string, id string) {
-	if id != "" {
-		logger.WithField("request_id", id).Warn(msg)
+func Warn(msg, id string) {
+	if id == "" {
+		logger.Warn(msg)
 		return
 	}
-	logger.Warn(msg)
+	logger.WithField("request_id", id).Warn(msg)
 }
 
 // Error logs an error level message with standard fields
-func Error(msg string, id string) {
-	if id != "" {
-		logger.WithField("request_id", id).Error(msg)
+func Error(msg, id string) {
+	if id == "" {
+		logger.Error(msg)
 		return
 	}
-	logger.Error(msg)
+	logger.WithField("request_id", id).Error(msg)
 }
 
 // Fatal logs a fatal level message with standard fields
-func Fatal(msg string, id string) {
-	if id != "" {
-		logger.WithField("request_id", id).Fatal(msg)
+func Fatal(msg, id string) {
+	if id == "" {
+		logger.Fatal(msg)
 		return
 	}
-	logger.Fatal(msg)
+	logger.WithField("request_id", id).Fatal(msg)
 }
