@@ -18,6 +18,7 @@ func init() {
 	logger.Formatter = customFormatter{&logrus.JSONFormatter{
 		TimestampFormat: time.RFC3339Nano,
 	}}
+	logger.Out = os.Stdout
 }
 
 // SetStandardFields sets up the service name, version, hostname and pid fields
