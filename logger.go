@@ -41,7 +41,18 @@ func UsePrettyPrint() {
 	}}
 }
 
-// ErrorLogger creates a logger than can plug in to an HTTP server
+// WarnLogger creates a logger that can plug in to an HTTP server
+func WarnLogger() (basicLogger *log.Logger, dispose func()) {
+	w := logger.WriterLevel(logrus.WarnLevel)
+	basicLogger = log.New(w, "", 0)
+	dispose = func() {
+		w.Close()
+	}
+
+	return
+}
+
+// ErrorLogger creates a logger that can plug in to an HTTP server
 func ErrorLogger() (basicLogger *log.Logger, dispose func()) {
 	w := logger.WriterLevel(logrus.ErrorLevel)
 	basicLogger = log.New(w, "", 0)
